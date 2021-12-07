@@ -39,7 +39,7 @@ body::after {
 .wrapper {
   width: 25rem;
   border-radius: 0.4rem;
-  background: #c3c3c3;
+  background: #ebebeb;
   box-shadow: 0px 0px 10px #0003;
   transition: background 0.3s ease-in-out;
 }
@@ -82,7 +82,7 @@ header i {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ddd;
+  background-color: #fff;
   transition: 0.3s;
   border-radius: 2rem;
 }
@@ -188,7 +188,7 @@ input:checked + .slider:before {
   color: #999;
   font-size: 1.2rem;
   padding-inline: 0.9rem;
-  background: #c3c3c3;
+  background: #ebebeb;
   transition:
     color 0.3s ease-in-out,
     background 0.3s ease-in-out;
