@@ -1,13 +1,15 @@
-const API_KEY = '0eb2c54d15bb3c3aa6072c41c5ac05cd',
-      body = document.querySelector('body'),
-      wrapper = document.querySelector('.wrapper'),
-      inputSect = wrapper.querySelector('.input'),
-      infoTxt = inputSect.querySelector('.info-txt'),
-      inputField = inputSect.querySelector('input'),
-      locationBtn = inputSect.querySelector('button'),
-      wIcon = wrapper.querySelector('.weather-sect img'),
-      arrowBack = wrapper.querySelector('header i'),
-      themeToggle = wrapper.querySelector('.theme-switch input')
+import './style.scss'
+
+const VITE_WEATHER_API_KEY = import.meta.env.VITE_WEATHER_API_KEY,
+  body = document.querySelector('body'),
+  wrapper = document.querySelector('.wrapper'),
+  inputSect = wrapper.querySelector('.input'),
+  infoTxt = inputSect.querySelector('.info-txt'),
+  inputField = inputSect.querySelector('input'),
+  locationBtn = inputSect.querySelector('button'),
+  wIcon = wrapper.querySelector('.weather-sect img'),
+  arrowBack = wrapper.querySelector('header i'),
+  themeToggle = wrapper.querySelector('.theme-switch input')
 let api
 
 inputField.addEventListener('keyup', e => {
@@ -18,16 +20,18 @@ inputField.addEventListener('keyup', e => {
 })
 
 locationBtn.addEventListener('click', () => {
-  if(navigator.geolocation) {
+  if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(onSuccess, onError)
   } else {
-    alert(`Either geolocation is not enabled on your device, or your browser doesn't support geolocation.`)
+    alert(
+      `Either geolocation is not enabled on your device, or your browser doesn't support geolocation.`
+    )
   }
 })
 
 function onSuccess(position) {
-  const {latitude, longitude} = position.coords  // getting lat and lon of the user device from coords obj
-  api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
+  const { latitude, longitude } = position.coords // getting lat and lon of the user device from coords obj
+  api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${VITE_WEATHER_API_KEY}`
   fetchData()
 }
 
@@ -37,7 +41,7 @@ function onError(error) {
 }
 
 function requestApi(city) {
-  api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
+  api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${VITE_WEATHER_API_KEY}`
   fetchData()
 }
 
@@ -46,21 +50,22 @@ function fetchData() {
   infoTxt.classList.add('pending')
   // getting api response and returning it with parsing into js obj and in another
   // then function calling weatherDetails function with passing api result as an argument
-  fetch(api).then(response => response.json()).then(result => weatherDetails(result))
+  fetch(api)
+    .then(response => response.json())
+    .then(result => weatherDetails(result))
+  console.log(api)
 }
 
 function weatherDetails(info) {
-
-  if(info.cod == '404') {
+  if (info.cod == '404') {
     infoTxt.classList.replace('pending', 'error')
     infoTxt.innerText = `${inputField.value} isn't a valid city name`
   } else {
-
     // get props from info object
     const city = info.name,
-          country = info.sys.country,
-          {description, icon, id} = info.weather[0],
-          {feels_like, humidity, temp} = info.main
+      country = info.sys.country,
+      { description, icon, id } = info.weather[0],
+      { feels_like, humidity, temp } = info.main
 
     // set image based on object icon
     switch (icon) {
@@ -118,25 +123,24 @@ function weatherDetails(info) {
     wrapper.querySelector('.location span').innerText = `${city}, ${country}`
     wrapper.querySelector('.temp .numb-2').innerText = Math.floor(feels_like)
     wrapper.querySelector('.humidity span').innerText = `${humidity}%`
-    
+
     infoTxt.classList.remove('pending', 'error')
     wrapper.classList.add('active')
   }
 }
 
 // return home
-arrowBack.addEventListener('click', () => 
-  wrapper.classList.remove('active')
-)
+arrowBack.addEventListener('click', () => wrapper.classList.remove('active'))
 
 // theme switch
-themeToggle.addEventListener('change', () => 
-  body.classList.toggle('dark-mode')
-)
+themeToggle.addEventListener('change', () => body.classList.toggle('dark-mode'))
 
 // theme switch if user color scheme is dark
 window.addEventListener('load', () => {
-  if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  if (
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+  ) {
     body.classList.toggle('dark-mode')
     themeToggle.checked = true
   }
