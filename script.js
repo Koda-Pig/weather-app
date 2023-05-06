@@ -12,6 +12,8 @@ const VITE_WEATHER_API_KEY = import.meta.env.VITE_WEATHER_API_KEY,
   themeToggle = wrapper.querySelector('.theme-switch input')
 let api
 
+console.log(VITE_WEATHER_API_KEY)
+
 inputField.addEventListener('keyup', e => {
   // if user presses enter button and input is not empty
   if (e.key == 'Enter' && inputField.value != '') {
