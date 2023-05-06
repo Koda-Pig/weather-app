@@ -55,7 +55,6 @@ function fetchData() {
   fetch(api)
     .then(response => response.json())
     .then(result => weatherDetails(result))
-  console.log(api)
 }
 
 function weatherDetails(info) {
