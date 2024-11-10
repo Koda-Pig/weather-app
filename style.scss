@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
 
 /* Made use of logical operators where possible
  * (Totally unnecessary, but good practice for me)
@@ -38,7 +38,7 @@ $off-black: #272121;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -52,7 +52,7 @@ body {
   background: $gradient-light;
   &::after {
     background: $gradient-dark;
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     bottom: 0;
@@ -234,7 +234,7 @@ body {
       justify-content: center;
       transition: background-color 0.3s ease-in-out;
       &::before {
-        content: 'or';
+        content: "or";
         color: $light-gray;
         font-size: 1.2rem;
         padding-inline: 0.9rem;
@@ -286,12 +286,14 @@ body {
   border-radius: 2rem;
   &::before {
     position: absolute;
-    content: '';
+    content: "";
     height: 1.5rem;
     width: 1.5rem;
     left: 0.25rem;
     bottom: 0.25rem;
-    background: transparent url('../../icons/moon.svg') no-repeat right top;
+    background: transparent
+      url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg viewBox='226.416 231.619 47.167 45.04' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath style='fill: rgb(130, 130, 130);' d='M46.369,28.793c-11.852,5.935-26.271,1.138-32.206-10.714c-2.748-5.488-3.191-11.524-1.702-17.016 C1.197,7.236-3.255,21.263,2.544,32.844C8.479,44.696,22.898,49.493,34.75,43.558c6.364-3.187,10.69-8.821,12.417-15.19 C46.903,28.513,46.64,28.658,46.369,28.793z' transform='matrix(1, 0, 0, 1, 226.416672, 230.555847)'/%3E%3C/svg%3E")
+      no-repeat right top;
     transition: 0.4s;
     border-radius: 50%;
   }
@@ -319,7 +321,9 @@ input {
       border-block-end: 1px solid $dark-txt;
     }
     .slider::before {
-      background: transparent url('../../icons/sun.svg') no-repeat right top;
+      background: transparent
+        url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='iso-8859-1'%3F%3E%3C!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 420 420' style='enable-background:new 0 0 420 420;' xml:space='preserve'%3E%3Cg%3E%3Cpolygon style='fill:%23F5C525;' points='420,210 375.774,247.857 399.238,301.145 342.926,315.986 340.945,374.184 283.764,363.211 256.724,414.779 210,380 163.276,414.779 136.236,363.211 79.055,374.184 77.073,315.986 20.762,301.144 44.226,247.858 0,210 44.226,172.143 20.762,118.855 77.074,104.014 79.055,45.816 136.236,56.789 163.276,5.221 210,40 256.723,5.221 283.764,56.789 340.945,45.816 342.927,104.014 399.238,118.856 375.774,172.142 '/%3E%3Ccircle style='fill:%23F8A805;' cx='210' cy='210' r='140'/%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3C/svg%3E%0A")
+        no-repeat right top;
     }
     .input {
       input {
